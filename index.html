@@ -108,6 +108,21 @@ h1 span{color:var(--peach)}
 .fl .you{background:repeating-linear-gradient(45deg,transparent 0 7px,#ff8a5c22 7px 14px);outline:2px dashed var(--peach);outline-offset:-4px}
 .ground{background:var(--note);text-align:center;font-size:11px;letter-spacing:3px;color:var(--sub);padding:7px;border-top:2px solid var(--line)}
 
+
+.plan-card{max-width:980px;margin:18px auto 0;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:var(--sh)}
+.plan-head{display:flex;flex-wrap:wrap;gap:8px;align-items:end;justify-content:space-between;margin-bottom:12px}
+.plan-head span{font-size:11px;font-weight:900;letter-spacing:2px;color:var(--peach-d)}
+.plan-head strong{font-size:18px}
+.plan-figure{margin:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}
+.plan-figure img{display:block;width:100%;height:auto;background:#f8f5ef}
+.plan-figure figcaption{padding:12px 14px;border-top:1px solid var(--line);font-size:12px;color:var(--sub);line-height:1.6;word-break:keep-all}
+.plan-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+.plan-note{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:14px}
+.plan-note h3{margin:0 0 8px;font-size:14px}
+.plan-note ul{margin:0;padding-left:18px;color:var(--sub);font-size:12px;line-height:1.7}
+.plan-note li+li{margin-top:4px}
+@media (max-width:720px){.plan-grid{grid-template-columns:1fr}}
+
 /* mates scroller */
 .sc{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 12px;scrollbar-width:thin}
 .m{flex:0 0 min(230px,72%);scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px}
@@ -256,9 +271,35 @@ footer{margin-top:44px;text-align:center;font-size:11px;letter-spacing:2px;color
 <section id="house">
   <p class="k">HOUSE</p><h2>한결대 셰어하우스</h2>
   <div class="bld"><div class="roof">HANGYEOL SHARE HOUSE</div>
-    <div class="fl"><div class="n">2F</div><div><b>201</b>강시헌<br><em>Alpha</em></div><div><b>202</b>한시우<br><em>Beta</em></div><div class="me"><b>203</b>윤하빈<br><em>Alpha</em></div><div class="you"><b>204</b>YOU<br><em>자유 선택</em></div></div>
-    <div class="fl"><div class="n">1F</div><div><b>101</b>한해온<br><em>Omega</em></div><div><b>102</b>한태겸<br><em>우성 Alpha</em></div><div><b>공용</b>거실·주방<br><em>COMMON</em></div></div>
+    <div class="fl"><div class="n">2F</div><div><b>201</b>강시헌<br><em>Alpha</em></div><div><b>202</b>한시우<br><em>Beta</em></div><div class="me"><b>203</b>윤하빈<br><em>Alpha</em></div><div class="you"><b>204</b>YOU<br><em>새 입주자</em></div></div>
+    <div class="fl"><div class="n">1F</div><div><b>101</b>한해온<br><em>Omega</em></div><div><b>102</b>한태겸<br><em>우성 Alpha</em></div><div><b>COMMON</b>거실·주방·테라스<br><em>1F 공용공간</em></div></div>
     <div class="ground">기존 5인 + 새 입주자 1인</div></div>
+
+  <div class="plan-card">
+    <div class="plan-head"><span>FLOOR PLAN</span><strong>방 배치와 공용공간을 한눈에 보는 셰어하우스 평면도</strong></div>
+    <figure class="plan-figure">
+      <img src="images/hangyeol-sharehouse-floorplan.svg" alt="한결대 셰어하우스 1층 2층 평면도: 1층 한해온 한태겸, 2층 강시헌 유저 한시우 윤하빈">
+      <figcaption>1층 ROOM 01(101호) = 한해온, ROOM 02(102호) = 한태겸. 2층 ROOM 03(201호) = 강시헌, ROOM 04(204호) = 새 입주자(USER), ROOM 05(202호) = 한시우, ROOM 06(203호) = 윤하빈. 공용 생활의 중심은 1층 거실·주방·아일랜드 식탁·테라스이며, 2층 미니 라운지는 짧은 휴식과 자연스러운 마주침이 일어나는 공간입니다.</figcaption>
+    </figure>
+    <div class="plan-grid">
+      <div class="plan-note">
+        <h3>층별 공간 구성</h3>
+        <ul>
+          <li><b>1F</b> 현관, 신발·외투 수납, ROOM 01, 세탁실, 욕실 01, ROOM 02, 창고·수납, 팬트리, 주방, 아일랜드 식탁, 거실, 테라스, BBQ.</li>
+          <li><b>2F</b> ROOM 03, ROOM 04, 미니 라운지, 욕실 02, ROOM 05, ROOM 06.</li>
+          <li>1층은 생활과 식사의 중심, 2층은 개인실과 조용한 휴식 중심으로 작동합니다.</li>
+        </ul>
+      </div>
+      <div class="plan-note">
+        <h3>장면 활용 포인트</h3>
+        <ul>
+          <li>귀가, 식사, 야식, 빨래, 택배 수령, 테라스 바비큐 같은 일상 이벤트는 1층 공용공간에서 자주 발생합니다.</li>
+          <li>2층 미니 라운지는 늦은 밤 짧은 대화, 우연한 마주침, 조용한 긴장감을 만들기 좋습니다.</li>
+          <li>캐릭터는 자기 방과 실제 동선에 맞춰 등장·이동해야 하며, 확인되지 않은 공간을 임의로 추가하지 않습니다.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="mates">
