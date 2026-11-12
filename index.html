@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<!-- IMAGE_URL_FRONT: 대표 이미지(앞면) 주소로 교체 / IMAGE_URL_BACK: 전신 이미지(뒷면) 주소로 교체 -->
 <html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>윤하빈 · 한결대 셰어하우스 | ROOM 203</title>
-<meta name="description" content="윤하빈 · 한결대 셰어하우스 203호. 캠퍼스 오메가버스 캐릭터 소개, 향, 룸메이트와 입주 안내.">
-
+<title>윤하빈 · 203호 (v3 LIVE FLIP) | 카미챗</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#f4ede1;--card:#fffdf8;--ink:#23201c;--sub:#6e6256;--line:#e3d7c4;
@@ -108,24 +106,7 @@ h1 span{color:var(--peach)}
 .fl .you{background:repeating-linear-gradient(45deg,transparent 0 7px,#ff8a5c22 7px 14px);outline:2px dashed var(--peach);outline-offset:-4px}
 .ground{background:var(--note);text-align:center;font-size:11px;letter-spacing:3px;color:var(--sub);padding:7px;border-top:2px solid var(--line)}
 
-
-.plan-card{max-width:980px;margin:18px auto 0;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:var(--sh)}
-.plan-head{display:flex;flex-wrap:wrap;gap:8px;align-items:end;justify-content:space-between;margin-bottom:12px}
-.plan-head span{font-size:11px;font-weight:900;letter-spacing:2px;color:var(--peach-d)}
-.plan-head strong{font-size:18px}
-.plan-figure{margin:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}
-.plan-figure img{display:block;width:100%;height:auto;background:#f8f5ef}
-.plan-figure figcaption{padding:12px 14px;border-top:1px solid var(--line);font-size:12px;color:var(--sub);line-height:1.6;word-break:keep-all}
-.plan-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
-.plan-note{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:14px}
-.plan-note h3{margin:0 0 8px;font-size:14px}
-.plan-note ul{margin:0;padding-left:18px;color:var(--sub);font-size:12px;line-height:1.7}
-.plan-note li+li{margin-top:4px}
-@media (max-width:720px){.plan-grid{grid-template-columns:1fr}}
-
 /* mates scroller */
-@media(min-width:720px){.sc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible}.sc .m{min-width:0;max-width:none;width:auto;flex:auto}}
-
 .sc{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 12px;scrollbar-width:thin}
 .m{flex:0 0 min(230px,72%);scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px}
 .m small{font-size:10px;font-weight:900;letter-spacing:2px;color:var(--peach-d)}
@@ -156,13 +137,6 @@ footer{margin-top:44px;text-align:center;font-size:11px;letter-spacing:2px;color
 }
 @media (min-width:900px){.tab{left:50%;right:auto;transform:translateX(-50%);bottom:14px;width:520px;border-radius:30px;padding-bottom:8px}}
 
-/* Missing portraits have a designed, readable fallback until real images are uploaded. */
-#hero-img,#back-img,#av{display:none}
-.portrait-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:14px;padding:22px;color:#273a2b;background:linear-gradient(160deg,#ffe4c7 3%,#ffc49c 45%,#abb48f)}
-.portrait-placeholder span{font-size:clamp(32px,6vw,50px);line-height:.98;font-weight:900;letter-spacing:-1.8px}
-.portrait-placeholder small{font-size:10px;font-weight:900;letter-spacing:2px}
-.portrait-placeholder.reverse{color:#f7f3df;background:linear-gradient(150deg,#50654f,#1f3027)}
-.pass .face.back{background:#1f3027}
 /* ===== LIVE additions ===== */
 #bar{position:fixed;left:0;top:env(safe-area-inset-top,0px);height:3px;width:0;background:linear-gradient(90deg,var(--tea),var(--peach));z-index:40;transition:width .1s linear}
 .hero{background:linear-gradient(180deg,var(--h1,#1f3027),var(--h2,#0f1a14));transition:background 1s}
@@ -204,6 +178,43 @@ footer{margin-top:44px;text-align:center;font-size:11px;letter-spacing:2px;color
 .flip:focus-visible .flip-in{outline:3px solid var(--peach);outline-offset:3px;border-radius:14px}
 .flip:not(.on):hover .flip-in{transform:rotateY(-8deg)}
 @media (prefers-reduced-motion:reduce){.flip-in{transition:none!important}}
+/* ===== ALBUM ===== */
+.scw{margin-top:12px;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+.scw iframe{display:block;width:100%;height:166px;border:0}
+.sco{display:inline-block;margin-top:8px;font-size:12px;font-weight:800;color:var(--peach-d);text-decoration:none}
+.alb{display:grid;grid-template-columns:240px 1fr;gap:26px;align-items:center}
+.cover{position:relative;aspect-ratio:1;margin-right:34px}
+.cover img{position:relative;z-index:2;width:100%;height:100%;object-fit:cover;object-position:50% 50%;border-radius:18px;box-shadow:0 12px 28px #0003;background:var(--hero)}
+.vinyl{position:absolute;z-index:1;right:-34px;top:7%;width:86%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#ff8a5c 0 13%,#111 14% 17%,#262626 18%,#111 38%,#262626 39%,#111 100%);animation:spin 5s linear infinite;animation-play-state:paused}
+.alb.playing .vinyl{animation-play-state:running}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ahead b{display:block;font-size:20px;font-weight:900;letter-spacing:-.3px}
+.ahead small{font-size:12px;color:var(--sub)}
+#tl{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:6px}
+#tl li{display:grid;grid-template-columns:26px 1fr 22px 42px;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:9px 12px;cursor:pointer;outline:none}
+#tl li:hover,#tl li:focus-visible{border-color:var(--peach)}
+#tl li.on{background:var(--bub-r);border-color:var(--peach)}
+#tl .no{font-size:12px;font-weight:900;color:var(--peach-d);text-align:center}
+#tl .nm b{display:block;font-size:14px;line-height:1.3}
+#tl .nm small{font-size:11px;color:var(--sub)}
+#tl .du{font-size:11px;color:var(--sub);text-align:right}
+.eq{display:flex;gap:2px;align-items:flex-end;height:14px;opacity:0}
+.eq i{width:3px;height:30%;background:var(--peach);border-radius:2px}
+.alb.playing li.on .eq{opacity:1}
+.alb.playing li.on .eq i{animation:eq .8s ease-in-out infinite}
+.eq i:nth-child(2){animation-delay:.2s!important}.eq i:nth-child(3){animation-delay:.4s!important}
+@keyframes eq{50%{height:100%}}
+.pl{display:flex;align-items:center;gap:10px;margin-top:12px;background:var(--hero);color:var(--hero-ink);border-radius:30px;padding:8px 14px}
+.pl button{font:inherit;cursor:pointer;border:0;color:#f7f3df;background:transparent;font-size:15px;padding:2px 6px}
+.pl #pp{background:var(--peach);color:#fff;width:34px;height:34px;border-radius:50%;padding:0}
+.pl .pi{flex:1;min-width:0}
+.pl .pn{font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pbar{height:4px;border-radius:4px;background:#ffffff33;margin-top:4px;cursor:pointer;overflow:hidden}
+.pbar i{display:block;height:100%;width:0;background:var(--peach)}
+.pl .ct{font-size:11px;color:#f9bd9e;min-width:34px;text-align:right}
+.toast{position:fixed;left:50%;bottom:calc(88px + env(safe-area-inset-bottom,0px));transform:translate(-50%,10px);background:#000c;color:#fff;font-size:12px;padding:8px 16px;border-radius:30px;opacity:0;pointer-events:none;transition:.3s;z-index:50;max-width:90vw;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media (max-width:720px){.alb{grid-template-columns:1fr}.cover{max-width:220px;margin:0 auto 0 0}}
 </style>
 </head>
 <body>
@@ -218,7 +229,7 @@ footer{margin-top:44px;text-align:center;font-size:11px;letter-spacing:2px;color
     <p class="quote">“204호 새 입주자? 잠깐, 우리 집에서 제일 잘생긴 사람부터 소개할게. 나야.”</p>
     <p class="about">자유분방한 디자인과 3학년. 사람과 농담을 좋아하고 자기 시간도 소중하다. 새 룸메이트가 들어왔다고 하루아침에 사랑에 빠질 생각은 없다. 아직은.</p>
   </div>
-  <aside class="pass"><div class="flip" id="flip" role="button" tabindex="0" aria-pressed="false" aria-label="카드를 눌러 뒤집기"><div class="flip-in"><div class="ph face"><div class="portrait-placeholder" aria-hidden="true"><span>YOON<br>HABIN.</span><small>ROOM 203 · ALPHA</small></div><img id="hero-img" src="images/habin-front.webp" loading="lazy" onload="this.style.display='block'" onerror="this.style.display='none'" alt="윤하빈 대표 이미지"><span class="fh">TAP ↻ FLIP</span></div><div class="ph face back"><div class="portrait-placeholder reverse" aria-hidden="true"><span>203.</span><small>HANGYEOL SHARE HOUSE</small></div><img id="back-img" src="images/habin-back.webp" loading="lazy" onload="this.style.display='block'" onerror="this.style.display='none'" alt="윤하빈 전신 이미지"><span class="fh dk">FULL SHOT ↻</span></div></div></div>
+  <aside class="pass"><div class="flip" id="flip" role="button" tabindex="0" aria-pressed="false" aria-label="카드를 눌러 뒤집기"><div class="flip-in"><div class="ph face"><img id="hero-img" src="images/habin-front.webp" alt="윤하빈 대표 이미지"><span class="fh">TAP ↻ FLIP</span></div><div class="ph face back"><img id="back-img" src="images/habin-back.webp" alt="윤하빈 전신 이미지"><span class="fh dk">FULL SHOT ↻</span></div></div></div>
     <div class="row"><div><span class="tag">HOUSEMATE</span><br><b>윤하빈</b></div><div style="text-align:right"><span class="tag">ALPHA</span><br><b>24</b></div></div>
   </aside>
 </div></header>
@@ -234,11 +245,11 @@ footer{margin-top:44px;text-align:center;font-size:11px;letter-spacing:2px;color
 <section id="open">
   <p class="k">OPENING</p><h2>204호 새 입주자</h2>
   <div class="phone">
-    <div class="ph-top"><div class="ava"><img id="av" alt="윤하빈 아바타" onload="this.style.display='block'" onerror="this.style.display='none'"></div><div><b>윤하빈</b><small>203호 · 지금 옆방 앞</small></div><button class="rp" id="rp" aria-label="처음부터 다시 보기">↻</button></div>
-    <div class="scene">늦은 오후 · 셰어하우스 2층 203·204호 앞 · 초면</div>
+    <div class="ph-top"><div class="ava"><img id="av" alt=""></div><div><b>윤하빈</b><small>203호 · 지금 203호 앞</small></div><button class="rp" id="rp" aria-label="처음부터 다시 보기">↻</button></div>
+    <div class="scene">늦은 오후 · 셰어하우스 2층 미니 라운지 · 203호 앞 · 초면</div>
     <div class="chat" id="chat" aria-live="polite"></div>
     <div class="chips" id="chips"><p>추천 답변 · 눌러서 하빈의 반응 미리보기</p>
-      <button>“내 거 맞네. 근데 그렇게 좋아했어? 뭐 시켰는데?”</button>
+      <button>“내 거 맞네. 뭐 시켰길래 그렇게 좋아했어? 뭐 시켰는데?”</button>
       <button>“처음 뵙는데 벌써 표정 관리 실패하신 것 같은데요?”</button>
       <button>“잠깐, 주소는 204호인데 이 이름은 내 이름이 아니야.”</button>
     </div>
@@ -271,39 +282,18 @@ footer{margin-top:44px;text-align:center;font-size:11px;letter-spacing:2px;color
 </section>
 
 <section id="house">
-  <p class="k">HOUSE · FLOOR PLAN</p>
-  <h2>한결대 셰어하우스</h2>
-  <p style="font-size:14px;color:var(--sub);margin:0 0 15px">다섯 명이 살던 집, 여섯 번째 입주자를 기다리는 204호. 실제 생활 공간과 방 배치를 아래 평면도에서 확인해 주세요.</p>
-  <div class="plan-card" id="floorplan">
-    <div class="plan-head"><span>HANGYEOL SHARE HOUSE · FLOOR PLAN</span><strong>1층 · 2층 전체 배치</strong></div>
-    <figure class="plan-figure">
-      <a href="images/hangyeol-sharehouse-floorplan.svg" target="_blank" rel="noopener" aria-label="셰어하우스 평면도 원본 크기로 보기" style="display:block;cursor:zoom-in">
-        <img src="images/hangyeol-sharehouse-floorplan.svg?v=20261109-floorplan-4" loading="eager" decoding="async" alt="한결대 셰어하우스 1층과 2층 전체 구조도. 1층 ROOM 01 한해온, ROOM 02 한태겸. 2층 ROOM 03 강시헌, ROOM 04 유저, ROOM 05 한시우, ROOM 06 윤하빈." style="display:block;width:100%;height:auto" />
-      </a>
-      <figcaption>방 번호와 층별 위치를 표시한 평면도입니다. 이미지를 누르면 큰 화면으로 볼 수 있습니다.</figcaption>
-    </figure>
-    <div class="plan-grid">
-      <div class="plan-note">
-        <h3>01 · 1층</h3>
-        <ul>
-          <li><strong>ROOM 01 / 101호</strong> 한해온 · 오메가</li>
-          <li><strong>ROOM 02 / 102호</strong> 한태겸 · 우성 알파</li>
-          <li>현관 · 거실 · 주방 · 6인 식탁 · 세탁실 · 욕실 01 · 팬트리 · 수납 · 테라스</li>
-        </ul>
-      </div>
-      <div class="plan-note">
-        <h3>02 · 2층</h3>
-        <ul>
-          <li><strong>ROOM 03 / 201호</strong> 강시헌 · 우성 알파</li>
-          <li><strong>ROOM 04 / 204호</strong> 유저 · 새 입주자</li>
-          <li><strong>ROOM 05 / 202호</strong> 한시우 · 베타</li>
-          <li><strong>ROOM 06 / 203호</strong> 윤하빈 · 알파</li>
-          <li>미니 라운지 · 욕실 02</li>
-        </ul>
-      </div>
+  <p class="k">HOUSE</p><h2>한결대 셰어하우스</h2>
+  <div style="max-width:780px;margin:0 auto"><p style="margin:0 0 10px;font-size:12px;color:#7a6a5b">6인 셰어하우스 · 2층 목조 단독주택 · 개인실 약 13㎡ · 연면적 약 236㎡</p>
+    <div style="border:3px solid #2d4135;border-radius:16px;overflow:hidden;background:#fffefd;margin-bottom:12px"><div style="background:#2d4135;color:#f7f3df;font-size:11px;font-weight:900;letter-spacing:4px;padding:6px 12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px"><span>1F</span><span style="letter-spacing:1px;font-weight:700;color:#f9bd9e">공용 공간 + 2개 방</span></div><div style="display:flex;flex-wrap:wrap;gap:8px;padding:10px 10px 0"><div style="flex:1 1 100%;min-width:0;background:#efe5d3;border:1px dashed #cdbfa6;border-radius:12px;padding:10px 12px;box-sizing:border-box"><strong style="display:block;font-size:13px;color:#5d554c">🌿 테라스 · 약 30㎡</strong><span style="font-size:11px;color:#7a6a5b">소파 라운지 · 식탁 · BBQ</span></div></div><div style="display:flex;flex-wrap:wrap;gap:8px;padding:10px 10px 0"><div style="flex:2 1 200px;min-width:0;background:#efe5d3;border:1px dashed #cdbfa6;border-radius:12px;padding:10px 12px;box-sizing:border-box"><strong style="display:block;font-size:13px;color:#5d554c">주방 · 약 14㎡</strong><span style="font-size:11px;color:#7a6a5b">아일랜드 식탁 (6인 · 3:3 배치)</span></div><div style="flex:2 1 200px;min-width:0;background:#efe5d3;border:1px dashed #cdbfa6;border-radius:12px;padding:10px 12px;box-sizing:border-box"><strong style="display:block;font-size:13px;color:#5d554c">거실 · 약 24㎡</strong><span style="font-size:11px;color:#7a6a5b">소파 · 공용 TV</span></div><div style="flex:1 1 140px;min-width:0;background:#efe5d3;border:1px dashed #cdbfa6;border-radius:12px;padding:10px 12px;box-sizing:border-box"><strong style="display:block;font-size:13px;color:#5d554c">펜트리</strong><span style="font-size:11px;color:#7a6a5b">약 3㎡</span></div></div><div style="display:flex;flex-wrap:wrap;gap:8px;padding:10px 10px 0"><div style="flex:1 1 140px;min-width:0;background:#fffefd;border:1px solid #e0d6c2;border-radius:12px;padding:11px 12px;box-sizing:border-box"><span style="font-size:10px;font-weight:900;letter-spacing:1px;color:#9a8b7a">101</span><strong style="display:block;color:#a95c46;font-size:15px">한해온</strong><span style="font-size:11px;color:#5d554c">Omega · 국제학부 · 약 13㎡</span></div><div style="flex:1 1 140px;min-width:0;background:#fffefd;border:1px solid #e0d6c2;border-radius:12px;padding:11px 12px;box-sizing:border-box"><span style="font-size:10px;font-weight:900;letter-spacing:1px;color:#9a8b7a">102</span><strong style="display:block;color:#a95c46;font-size:15px">한태겸</strong><span style="font-size:11px;color:#5d554c">우성 Alpha · HALFTONE · 약 13㎡</span></div><div style="flex:1 1 140px;min-width:0;background:#efe5d3;border:1px dashed #cdbfa6;border-radius:12px;padding:10px 12px;box-sizing:border-box"><strong style="display:block;font-size:13px;color:#5d554c">세탁실</strong><span style="font-size:11px;color:#7a6a5b">세탁기·건조기 2세트</span></div><div style="flex:1 1 140px;min-width:0;background:#efe5d3;border:1px dashed #cdbfa6;border-radius:12px;padding:10px 12px;box-sizing:border-box"><strong style="display:block;font-size:13px;color:#5d554c">욕실 01</strong><span style="font-size:11px;color:#7a6a5b">약 4.5㎡</span></div></div><div style="display:flex;flex-wrap:wrap;gap:8px;padding:10px 10px 0"><div style="flex:1 1 100%;min-width:0;background:#efe5d3;border:1px dashed #cdbfa6;border-radius:12px;padding:10px 12px;box-sizing:border-box"><strong style="display:block;font-size:13px;color:#5d554c">현관</strong><span style="font-size:11px;color:#7a6a5b">신발·외투 수납 · 창고 수납</span></div></div><div style="height:10px"></div></div><div style="border:3px solid #2d4135;border-radius:16px;overflow:hidden;background:#fffefd;margin-bottom:12px"><div style="background:#2d4135;color:#f7f3df;font-size:11px;font-weight:900;letter-spacing:4px;padding:6px 12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px"><span>2F</span><span style="letter-spacing:1px;font-weight:700;color:#f9bd9e">개인실 4개 + 미니 라운지</span></div><div style="display:flex;flex-wrap:wrap;gap:8px;padding:10px 10px 0"><div style="flex:1 1 140px;min-width:0;background:#fffefd;border:1px solid #e0d6c2;border-radius:12px;padding:11px 12px;box-sizing:border-box"><span style="font-size:10px;font-weight:900;letter-spacing:1px;color:#9a8b7a">201</span><strong style="display:block;color:#a95c46;font-size:15px">강시헌</strong><span style="font-size:11px;color:#5d554c">Alpha · 심리학과 · 약 13㎡</span></div><div style="flex:1 1 140px;min-width:0;background:#f4cfad;border:2px dashed #d9784d;border-radius:12px;padding:11px 12px;box-sizing:border-box"><span style="font-size:10px;font-weight:900;letter-spacing:1px;color:#9a8b7a">204</span><strong style="display:block;color:#7e3d2d;font-size:15px">YOU</strong><span style="font-size:11px;color:#5d554c">여섯 번째 입주자 · 약 13㎡</span></div></div><div style="display:flex;flex-wrap:wrap;gap:8px;padding:10px 10px 0"><div style="flex:3 1 220px;min-width:0;background:#efe5d3;border:1px dashed #cdbfa6;border-radius:12px;padding:10px 12px;box-sizing:border-box"><strong style="display:block;font-size:13px;color:#5d554c">🛋️ 미니 라운지 · 약 11㎡</strong><span style="font-size:11px;color:#7a6a5b">계단(UP/DN)과 연결 · 자연스러운 교류 공간</span></div><div style="flex:1 1 140px;min-width:0;background:#efe5d3;border:1px dashed #cdbfa6;border-radius:12px;padding:10px 12px;box-sizing:border-box"><strong style="display:block;font-size:13px;color:#5d554c">욕실 02</strong><span style="font-size:11px;color:#7a6a5b">약 5㎡</span></div></div><div style="display:flex;flex-wrap:wrap;gap:8px;padding:10px 10px 0"><div style="flex:1 1 140px;min-width:0;background:#fffefd;border:1px solid #e0d6c2;border-radius:12px;padding:11px 12px;box-sizing:border-box"><span style="font-size:10px;font-weight:900;letter-spacing:1px;color:#9a8b7a">202</span><strong style="display:block;color:#a95c46;font-size:15px">한시우</strong><span style="font-size:11px;color:#5d554c">Beta · 수영부 · 약 13㎡</span></div><div style="flex:1 1 140px;min-width:0;background:#fce0bb;border:2px solid #e59c6a;border-radius:12px;padding:11px 12px;box-sizing:border-box"><span style="font-size:10px;font-weight:900;letter-spacing:1px;color:#9a8b7a">203</span><strong style="display:block;color:#7e3d2d;font-size:15px">윤하빈</strong><span style="font-size:11px;color:#5d554c">Alpha · 시각디자인 · 약 13㎡</span></div></div><div style="height:10px"></div></div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin:2px 0 14px"><span style="display:inline-block;background:#314435;color:#f5f5e8;padding:4px 11px;border-radius:30px;font-size:12px;font-weight:700">넓은 공용공간 + 테라스</span><span style="display:inline-block;background:#314435;color:#f5f5e8;padding:4px 11px;border-radius:30px;font-size:12px;font-weight:700">6인 아일랜드 식탁</span><span style="display:inline-block;background:#314435;color:#f5f5e8;padding:4px 11px;border-radius:30px;font-size:12px;font-weight:700">수납·세탁실 2SET</span><span style="display:inline-block;background:#314435;color:#f5f5e8;padding:4px 11px;border-radius:30px;font-size:12px;font-weight:700">각 층 화장실</span><span style="display:inline-block;background:#314435;color:#f5f5e8;padding:4px 11px;border-radius:30px;font-size:12px;font-weight:700">2층 미니 라운지</span></div>
+    <p style="margin:0 0 8px;font-size:11px;font-weight:900;letter-spacing:2px;color:#e26543">HOUSE LIFE · 하우스에서 이렇게 흘러가요</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px">
+      <div style="flex:1 1 230px;min-width:0;background:#fffefd;border:1px solid #e3d7c4;border-radius:14px;padding:13px 15px;box-sizing:border-box"><strong style="display:block;color:#bc5538;font-size:11px;letter-spacing:2px;margin-bottom:3px">각자의 생활</strong><p style="margin:0;font-size:13px;color:#334333">학업·식사·귀가·소음·집안일·약속·운동·공연·작업은 입주자마다 각자의 일정대로 진행돼요.</p></div>
+      <div style="flex:1 1 230px;min-width:0;background:#fffefd;border:1px solid #e3d7c4;border-radius:14px;padding:13px 15px;box-sizing:border-box"><strong style="display:block;color:#bc5538;font-size:11px;letter-spacing:2px;margin-bottom:3px">우연한 동선</strong><p style="margin:0;font-size:13px;color:#334333">현관·거실·주방·계단·복도에서 서로의 동선이 우연히 교차할 수 있어요.</p></div>
+      <div style="flex:1 1 230px;min-width:0;background:#fffefd;border:1px solid #e3d7c4;border-radius:14px;padding:13px 15px;box-sizing:border-box"><strong style="display:block;color:#bc5538;font-size:11px;letter-spacing:2px;margin-bottom:3px">향의 장면</strong><p style="margin:0;font-size:13px;color:#334333">공용 공간의 잔향·환기·거리감으로 향이 스칠 수 있어요. 확인된 형질과 인물 정보로만 반응해요.</p></div>
+      <div style="flex:1 1 230px;min-width:0;background:#fffefd;border:1px solid #e3d7c4;border-radius:14px;padding:13px 15px;box-sizing:border-box"><strong style="display:block;color:#bc5538;font-size:11px;letter-spacing:2px;margin-bottom:3px">사생활</strong><p style="margin:0;font-size:13px;color:#334333">다른 입주자의 개인실 출입과 물건 사용은 허락이나 기존 기록을 기준으로 해요. [user]의 이동과 결정은 대신 쓰지 않아요.</p></div>
     </div>
-    <p style="font-size:11px;color:var(--sub);margin:13px 0 0">방 번호는 평면도 ROOM 01~06 기준입니다. 실제 대화 속 기존 호수(101, 102, 201~204)와 같은 방을 가리킵니다.</p>
-  </div>
+    <p style="margin:8px 0 0;font-size:11px;color:#8a7a6a">※ 방 배치는 이해를 돕기 위한 예시도예요.</p></div>
 </section>
 
 <section id="mates">
@@ -316,20 +306,35 @@ footer{margin-top:44px;text-align:center;font-size:11px;letter-spacing:2px;color
   </div>
 </section>
 
+<section id="album">
+  <p class="k">ALBUM</p><h2>셰어하우스 플레이리스트</h2>
+  <div class="alb" id="alb">
+    <div class="cover"><span class="vinyl"></span><img id="cov" src="images/themes/five-ways.jpg" alt="FIVE WAYS 앨범 커버"></div>
+    <div>
+      <div class="ahead"><b>FIVE WAYS</b><small>HANGYEOLDAE SHAREHOUSE · 단체 테마곡 + 입주자 5인 테마곡</small></div>
+      <ol id="tl"></ol>
+      <div class="scw"><iframe id="scf" title="SoundCloud 플레이어" allow="autoplay" loading="lazy" src="about:blank"></iframe></div>
+      <a class="sco" id="sco" href="#" target="_blank" rel="noopener">SoundCloud에서 열기 ↗</a>
+    </div>
+  </div>
+</section>
+
 <section id="guide">
   <p class="k">GUIDE</p><h2>입주 안내</h2>
   <details open><summary>🎭 추천 페르소나</summary><p>204호에 들어온 여섯 번째 입주자. 학생·직장인·프리랜서 등 자유롭게, 이름·나이·성별·제2성(Alpha/Beta/Omega/미정)도 직접 정할 수 있어요.</p></details>
   <details><summary>✍️ 유저노트 추천</summary><p>생활 리듬, 직업·전공, 취향, 제2성·체향(선택), 공개 가능한 정보와 경계를 적어 두면 좋아요.</p></details>
   <details><summary>❗ 플레이 팁</summary><p>하빈은 먼저 말을 걸고 상황을 움직이지만 일방적으로 도와주는 안내자는 아니에요. 호감과 향 반응, 관계 변화는 실제 상호작용으로만 진행됩니다.</p></details>
-  <div class="cmd" style="margin-top:14px"><span>/기록</span><span>/거주현황</span><span>/워치기록</span><span>/러트</span><span>/상태</span></div>
+  <div style="max-width:780px"><p style="margin:16px 0 8px;font-size:11px;font-weight:900;letter-spacing:2px;color:#e26543">SHORTCUTS · 채팅 단축어</p><div style="display:flex;flex-direction:column;gap:7px"><div style="display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;padding:9px 12px;background:#fffefd;border:1px solid #e0d6c2;border-radius:12px"><span style="background:#f07751;color:#fff;font-size:12px;font-weight:800;padding:2px 11px;border-radius:30px;flex:none">/워치기록</span><span style="font-size:13px;color:#47443d;min-width:0">Scent ID 기록을 보여줘요</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;padding:9px 12px;background:#fffefd;border:1px solid #e0d6c2;border-radius:12px"><span style="background:#f07751;color:#fff;font-size:12px;font-weight:800;padding:2px 11px;border-radius:30px;flex:none">/러트</span><span style="font-size:13px;color:#47443d;min-width:0">하빈의 주기를 조회해요</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;padding:9px 12px;background:#fffefd;border:1px solid #e0d6c2;border-radius:12px"><span style="background:#f07751;color:#fff;font-size:12px;font-weight:800;padding:2px 11px;border-radius:30px;flex:none">/sns</span><span style="font-size:13px;color:#47443d;min-width:0">입주자들의 SNS 피드를 보여줘요</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;padding:9px 12px;background:#fffefd;border:1px solid #e0d6c2;border-radius:12px"><span style="background:#f07751;color:#fff;font-size:12px;font-weight:800;padding:2px 11px;border-radius:30px;flex:none">/에타</span><span style="font-size:13px;color:#47443d;min-width:0">한결대 에브리타임 게시판을 보여줘요</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;padding:9px 12px;background:#fffefd;border:1px solid #e0d6c2;border-radius:12px"><span style="background:#f07751;color:#fff;font-size:12px;font-weight:800;padding:2px 11px;border-radius:30px;flex:none">/카톡</span><span style="font-size:13px;color:#47443d;min-width:0">입주자들의 카톡 대화를 보여줘요</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;padding:9px 12px;background:#fffefd;border:1px solid #e0d6c2;border-radius:12px"><span style="background:#f07751;color:#fff;font-size:12px;font-weight:800;padding:2px 11px;border-radius:30px;flex:none">/캐붕점검</span><span style="font-size:13px;color:#47443d;min-width:0">캐릭터 붕괴 점검 및 복구</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;padding:9px 12px;background:#fffefd;border:1px solid #e0d6c2;border-radius:12px"><span style="background:#f07751;color:#fff;font-size:12px;font-weight:800;padding:2px 11px;border-radius:30px;flex:none">/장기기억용요약</span><span style="font-size:13px;color:#47443d;min-width:0">장기기억에 넣기 좋게 로그 요약 · 15~20턴마다 권장</span></div></div><p style="margin:7px 0 0;font-size:11px;color:#8a7a6a">모두 조회·점검용이라, 불러도 이야기가 진행되지는 않아요.</p></div>
 </section>
-<footer>HABIN / ROOM 203 · KAMI CREATOR · WEB v1 · LIVE FLIP · 2026-11-09 10:15 KST</footer>
+<footer>HABIN / ROOM 203 · KAMI CREATOR · v3 LIVE · FLIP · ALBUM · 2026-11-12</footer>
 </main>
 
 <nav class="tab" aria-label="바로가기"><div>
-  <a href="#open"><i>💬</i>시작</a><a href="#me"><i>🪪</i>프로필</a><a href="#scent"><i>🍑</i>향</a><a href="#house"><i>🏠</i>하우스</a><a href="#guide"><i>📖</i>가이드</a>
+  <a href="#open"><i>💬</i>시작</a><a href="#me"><i>🪪</i>프로필</a><a href="#scent"><i>🍑</i>향</a><a href="#house"><i>🏠</i>하우스</a><a href="#album"><i>🎧</i>앨범</a><a href="#guide"><i>📖</i>가이드</a>
 </div></nav>
+<div class="toast" id="toast" role="status"></div>
 
+<script src="https://w.soundcloud.com/player/api.js"></script>
 <script>
 (function(){
   var $=function(q){return document.querySelector(q)},$$=function(q){return document.querySelectorAll(q)};
@@ -346,7 +351,7 @@ footer{margin-top:44px;text-align:center;font-size:11px;letter-spacing:2px;color
   };
   function ph(h){return h<5?'dawn':h<11?'morning':h<17?'day':h<21?'evening':'night'}
   function tick(){
-    var d=new Date(Date.now()+9*3600000),h=d.getUTCHours(),m=('0'+d.getUTCMinutes()).slice(-2),p=P[ph(h)],hero=$('.hero');
+    var d=new Date(),h=d.getHours(),m=('0'+d.getMinutes()).slice(-2),p=P[ph(h)],hero=$('.hero');
     $('#clock').textContent=p.ic+' '+p.t+' · '+(h<12?'오전 ':'오후 ')+(h%12||12)+':'+m;
     $('#greet').textContent=p.g;
     hero.style.setProperty('--h1',p.a);hero.style.setProperty('--h2',p.b);
@@ -390,7 +395,7 @@ footer{margin-top:44px;text-align:center;font-size:11px;letter-spacing:2px;color
 
   /* 5. 도입부 채팅이 실시간으로 흘러감 */
   var chat=$('#chat'),busy=false,run=0;
-  var S=[['a','(문고리에 걸린 택배 봉투를 발견한 하빈. 주소는 204호, 바로 옆방이다.)'],['l','204호?'],['a','(그가 송장이 보이도록 봉투를 돌려 든다.)'],['l','이거 우리 방에 걸려 있더라. 네 거 맞아?'],['l','아, 나 윤하빈. 옆방 203호 살아. 새로 들어온다더니 택배부터 보네. 순서가 좀 웃기다.'],['l','내 건 줄 알고 잠깐 좋아했거든. 네 거면 가져가. 내가 괜히 신난 건 못 본 걸로 하고.']];
+  var S=[['a','(203호 문고리에 잘못 걸려 있던 택배 봉투를 발견한 하빈. 주소는 204호, 미니 라운지 건너편 방이다.)'],['l','204호?'],['a','(그가 송장이 보이도록 봉투를 돌려 든다.)'],['l','이거 우리 방에 걸려 있더라. 네 거 맞아?'],['l','아, 나 윤하빈. 라운지 건너편 203호 살아. 새로 들어온다더니 택배부터 보네. 순서가 좀 웃기다.'],['l','내 건 줄 알고 잠깐 좋아했거든. 네 거면 가져가. 내가 괜히 신난 건 못 본 걸로 하고.']];
   var R=['궁금해? 일단 네 거 맞는지부터 확인하자. 송장 이름 한번 봐봐.','표정 관리? 나 원래 이 얼굴이 기본값인데. 아, 그게 문제구나.','어? 그럼 남의 택배가 왜 우리 문고리에… 잠깐만, 이거 좀 이상한데.'];
   function down(){chat.scrollTop=chat.scrollHeight}
   function add(k,t){
@@ -436,6 +441,44 @@ footer{margin-top:44px;text-align:center;font-size:11px;letter-spacing:2px;color
   btns.forEach(function(b,k){b.addEventListener('click',function(){hold=Date.now()+15000;setS(k)})});
   setS(0);
   setInterval(function(){if(Date.now()<hold)return;setS((cur+1)%ST.length)},4200);
+  /* 7. 앨범 트랙 · SoundCloud 연결 */
+  var TR=[
+    {t:'Five Ways',m:'★ 단체 테마곡 · 한결대 셰어하우스',u:'https://on.soundcloud.com/5scT8zpvVTgbVgkH29',c:'images/themes/five-ways.jpg'},
+    {t:'윤하빈 테마곡',m:'HABIN · 203호',u:'https://on.soundcloud.com/hh4RZM1B389NeeWnPu',c:'images/themes/habin.webp'},
+    {t:'강시헌 테마곡',m:'SIHEON · 201호',u:'https://on.soundcloud.com/kVsWKbeMP30WowFwyE',c:'images/themes/siheon.webp'},
+    {t:'한태겸 테마곡',m:'TAEGYEOM · 102호',u:'https://on.soundcloud.com/j59AsYhCMZvDE47h3V',c:'images/themes/taegyeom.webp'},
+    {t:'한해온 테마곡',m:'HAEON · 101호',u:'https://on.soundcloud.com/S84LjJ7IboWIUpVhCh',c:'images/themes/five-ways.jpg'},
+    {t:'한시우 테마곡',m:'SIWOO · 202호',u:'https://on.soundcloud.com/plvdHqKgJWFdMUzwYA',c:'images/themes/siwoo.webp'}
+  ];
+  var ti=-1,tl=$('#tl'),alb=$('#alb'),scf=$('#scf'),sco=$('#sco'),wg=null;
+  function playing(on){alb.classList.toggle('playing',on)}
+  function embed(u,auto){return 'https://w.soundcloud.com/player/?url='+encodeURIComponent(u)+'&color=%23f07751&auto_play='+(auto?'true':'false')+'&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false'}
+  function bind(){
+    if(wg||!window.SC||!SC.Widget)return;
+    try{wg=SC.Widget(scf);
+      wg.bind(SC.Widget.Events.PLAY,function(){playing(true)});
+      wg.bind(SC.Widget.Events.PAUSE,function(){playing(false)});
+      wg.bind(SC.Widget.Events.FINISH,function(){playing(false);pick((ti+1)%TR.length,true)});
+    }catch(e){wg=null}
+  }
+  TR.forEach(function(t,i){
+    var li=document.createElement('li');li.tabIndex=0;
+    li.innerHTML='<span class="no">'+(i+1)+'</span><span class="nm"><b></b><small></small></span><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="du">♪</span>';
+    li.querySelector('b').textContent=t.t;li.querySelector('small').textContent=t.m;
+    li.addEventListener('click',function(){pick(i,true)});
+    li.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(i,true)}});
+    tl.appendChild(li);
+  });
+  function pick(i,auto){
+    ti=i;var t=TR[i];
+    Array.prototype.forEach.call(tl.children,function(l,j){l.classList.toggle('on',j===i)});
+    var art=$('#cov');art.src=t.c;art.alt=t.t+' 앨범 커버';
+    sco.href=t.u;sco.textContent=t.t+' · SoundCloud에서 열기 ↗';
+    playing(false);
+    scf.src=embed(t.u,auto);
+    wg=null;scf.onload=bind;setTimeout(bind,800);
+  }
+  pick(0,false);
 })();
 </script>
 </body>
