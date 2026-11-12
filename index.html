@@ -179,6 +179,14 @@ footer{margin-top:44px;text-align:center;font-size:11px;letter-spacing:2px;color
 .flip:not(.on):hover .flip-in{transform:rotateY(-8deg)}
 @media (prefers-reduced-motion:reduce){.flip-in{transition:none!important}}
 /* ===== ALBUM ===== */
+.cover{cursor:pointer}
+.cover-play{position:absolute;z-index:5;top:50%;left:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:68px;height:68px;border-radius:50%;border:2px solid #ffffffa6;background:#20372de8;color:#fff;font-size:27px;font-weight:900;box-shadow:0 8px 26px #0008;cursor:pointer;transition:background .2s,scale .2s;touch-action:manipulation}
+.cover-play:hover{background:#f07751;scale:1.08}
+.cover-play:focus-visible{outline:3px solid #ff8a5c;outline-offset:5px}
+.alb.playing .cover-play{background:#f07751e8}
+.pl button:focus-visible{outline:2px solid #ffb184;outline-offset:3px}
+#player-note{font-size:11px;color:var(--sub);margin:7px 0 0}
+
 .scw{margin-top:12px;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
 .scw iframe{display:block;width:100%;height:166px;border:0}
 .sco{display:inline-block;margin-top:8px;font-size:12px;font-weight:800;color:var(--peach-d);text-decoration:none}
@@ -309,10 +317,17 @@ footer{margin-top:44px;text-align:center;font-size:11px;letter-spacing:2px;color
 <section id="album">
   <p class="k">ALBUM</p><h2>셰어하우스 플레이리스트</h2>
   <div class="alb" id="alb">
-    <div class="cover"><span class="vinyl"></span><img id="cov" src="images/themes/five-ways.jpg" alt="FIVE WAYS 앨범 커버"></div>
+    <div class="cover" id="cover-surface"><span class="vinyl"></span><img id="cov" src="images/themes/five-ways.jpg" alt="FIVE WAYS 앨범 커버"><button type="button" class="cover-play" id="cover-play" aria-label="선택한 테마곡 재생">▶</button></div>
     <div>
       <div class="ahead"><b>FIVE WAYS</b><small>HANGYEOLDAE SHAREHOUSE · 단체 테마곡 + 입주자 5인 테마곡</small></div>
       <ol id="tl"></ol>
+      <div class="pl" role="group" aria-label="테마곡 재생 컨트롤">
+        <button type="button" id="prev" aria-label="이전 곡">⏮</button>
+        <button type="button" id="pp" aria-label="재생">▶</button>
+        <button type="button" id="next" aria-label="다음 곡">⏭</button>
+        <div class="pi"><div class="pn" id="pn">Five Ways</div><div class="pbar" id="pbar" role="progressbar" aria-label="재생 진행" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="pbari"></i></div></div>
+        <span class="ct" id="ct">0:00</span>
+      </div>
       <div class="scw"><iframe id="scf" title="SoundCloud 플레이어" allow="autoplay" loading="lazy" src="about:blank"></iframe></div>
       <a class="sco" id="sco" href="#" target="_blank" rel="noopener">SoundCloud에서 열기 ↗</a>
     </div>
@@ -451,33 +466,105 @@ footer{margin-top:44px;text-align:center;font-size:11px;letter-spacing:2px;color
     {t:'한시우 테마곡',m:'SIWOO · 202호',u:'https://on.soundcloud.com/plvdHqKgJWFdMUzwYA',c:'images/themes/siwoo.webp'}
   ];
   var ti=-1,tl=$('#tl'),alb=$('#alb'),scf=$('#scf'),sco=$('#sco'),wg=null;
-  function playing(on){alb.classList.toggle('playing',on)}
+  var coverPlay=$('#cover-play'), playBtn=$('#pp'),prevBtn=$('#prev'),nextBtn=$('#next');
+  var pn=$('#pn'),pbari=$('#pbari'),pbar=$('#pbar'),ct=$('#ct');
+  var isPlaying=false,requestedPlay=false,widgetReady=false,loadingTrack=false,trackDuration=0;
+  function clock(ms){var t=Math.max(0,Math.floor((ms||0)/1000));return Math.floor(t/60)+':'+('0'+(t%60)).slice(-2)}
+  function playing(on){
+    isPlaying=!!on;alb.classList.toggle('playing',isPlaying);
+    coverPlay.textContent=playBtn.textContent=isPlaying?'❚❚':'▶';
+    coverPlay.setAttribute('aria-label',isPlaying?'선택한 테마곡 일시정지':'선택한 테마곡 재생');
+    playBtn.setAttribute('aria-label',isPlaying?'일시정지':'재생');
+  }
   function embed(u,auto){return 'https://w.soundcloud.com/player/?url='+encodeURIComponent(u)+'&color=%23f07751&auto_play='+(auto?'true':'false')+'&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false'}
+  function progress(ms,ratio){
+    if(typeof ratio==='number'&&isFinite(ratio)){
+      var p=Math.max(0,Math.min(100,Math.round(ratio*100)));
+      pbari.style.width=p+'%';pbar.setAttribute('aria-valuenow',String(p));
+    }
+    ct.textContent=clock(ms);
+  }
   function bind(){
     if(wg||!window.SC||!SC.Widget)return;
-    try{wg=SC.Widget(scf);
-      wg.bind(SC.Widget.Events.PLAY,function(){playing(true)});
-      wg.bind(SC.Widget.Events.PAUSE,function(){playing(false)});
-      wg.bind(SC.Widget.Events.FINISH,function(){playing(false);pick((ti+1)%TR.length,true)});
+    try{
+      wg=SC.Widget(scf);
+      wg.bind(SC.Widget.Events.READY,function(){
+        widgetReady=true;loadingTrack=false;
+        wg.getDuration(function(ms){trackDuration=ms||0});
+        if(requestedPlay)wg.play();
+      });
+      wg.bind(SC.Widget.Events.PLAY,function(){requestedPlay=true;playing(true)});
+      wg.bind(SC.Widget.Events.PAUSE,function(){
+        if(!loadingTrack)requestedPlay=false;
+        playing(false);
+      });
+      wg.bind(SC.Widget.Events.PLAY_PROGRESS,function(e){
+        if(e)progress(e.currentPosition,e.relativePosition);
+      });
+      wg.bind(SC.Widget.Events.FINISH,function(){
+        requestedPlay=false;playing(false);
+        pick((ti+1)%TR.length,true);
+      });
+      wg.bind(SC.Widget.Events.ERROR,function(){
+        requestedPlay=false;loadingTrack=false;playing(false);
+        ct.textContent='확인 필요';
+      });
     }catch(e){wg=null}
   }
   TR.forEach(function(t,i){
     var li=document.createElement('li');li.tabIndex=0;
-    li.innerHTML='<span class="no">'+(i+1)+'</span><span class="nm"><b></b><small></small></span><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="du">♪</span>';
+    li.setAttribute('role','button');
+    li.setAttribute('aria-label',t.t+' 선택 및 재생');
+    li.innerHTML='<span class="no">'+(i+1)+'</span><span class="nm"><b></b><small></small></span><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="du">▶</span>';
     li.querySelector('b').textContent=t.t;li.querySelector('small').textContent=t.m;
     li.addEventListener('click',function(){pick(i,true)});
     li.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(i,true)}});
     tl.appendChild(li);
   });
   function pick(i,auto){
-    ti=i;var t=TR[i];
-    Array.prototype.forEach.call(tl.children,function(l,j){l.classList.toggle('on',j===i)});
+    ti=(i+TR.length)%TR.length;var t=TR[ti];
+    Array.prototype.forEach.call(tl.children,function(l,j){l.classList.toggle('on',j===ti);l.setAttribute('aria-pressed',j===ti?'true':'false')});
     var art=$('#cov');art.src=t.c;art.alt=t.t+' 앨범 커버';
     sco.href=t.u;sco.textContent=t.t+' · SoundCloud에서 열기 ↗';
-    playing(false);
-    scf.src=embed(t.u,auto);
-    wg=null;scf.onload=bind;setTimeout(bind,800);
+    pn.textContent=t.t;progress(0,0);trackDuration=0;
+    requestedPlay=!!auto;widgetReady=false;loadingTrack=true;playing(false);
+    if(wg&&window.SC&&SC.Widget){
+      try{
+        wg.load(t.u,{auto_play:!!auto,show_artwork:false,show_comments:false,show_user:true,callback:function(){
+          widgetReady=true;loadingTrack=false;
+          wg.getDuration(function(ms){trackDuration=ms||0});
+          if(requestedPlay)wg.play();
+        }});
+      }catch(e){wg=null;scf.src=embed(t.u,auto);scf.onload=bind}
+    }else{
+      scf.src=embed(t.u,auto);scf.onload=bind;bind();
+    }
   }
+  function togglePlay(){
+    if(isPlaying){
+      requestedPlay=false;
+      if(wg&&widgetReady)wg.pause();
+      playing(false);
+    }else{
+      requestedPlay=true;
+      if(wg&&widgetReady){wg.play()}
+      else if(wg){/* READY 시 재생 요청 처리 */}
+      else{
+        scf.src=embed(TR[ti].u,true);
+        scf.onload=bind;bind();
+      }
+    }
+  }
+  coverPlay.addEventListener('click',function(e){e.stopPropagation();togglePlay()});
+  $('#cover-surface').addEventListener('click',togglePlay);
+  playBtn.addEventListener('click',togglePlay);
+  prevBtn.addEventListener('click',function(){pick((ti-1+TR.length)%TR.length,true)});
+  nextBtn.addEventListener('click',function(){pick((ti+1)%TR.length,true)});
+  pbar.addEventListener('click',function(e){
+    if(!wg||!widgetReady||!trackDuration)return;
+    var box=pbar.getBoundingClientRect(),ratio=(e.clientX-box.left)/box.width;
+    wg.seekTo(Math.max(0,Math.min(1,ratio))*trackDuration);
+  });
   pick(0,false);
 })();
 </script>
